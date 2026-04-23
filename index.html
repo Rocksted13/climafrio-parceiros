@@ -147,10 +147,17 @@ nav.scrolled{background:rgba(6,21,37,.97);backdrop-filter:blur(12px);box-shadow:
 .prod-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.5}
 .prod-seg{display:inline-block;margin-top:10px;font-size:11px;color:rgba(255,255,255,.3);font-weight:500}
 
+/* ── MARCAS ── */
+#marcas{padding:80px 0;background:var(--white)}
+.marcas-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:48px}
+.marca-pill{display:inline-flex;align-items:center;padding:11px 24px;border:1.5px solid var(--gray-200);border-radius:50px;font-family:var(--fd);font-weight:700;font-size:16px;letter-spacing:.02em;color:var(--navy);transition:var(--tr);background:var(--white);cursor:default}
+.marca-pill:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-glow);box-shadow:0 4px 16px rgba(249,115,22,.1)}
+
 /* ── CONDIÇÕES ── */
 #condicoes{padding:100px 0;background:var(--off-white)}
 .cond-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:56px}
-@media(min-width:640px){.cond-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:640px){.cond-grid{grid-template-columns:repeat(3,1fr)}}
+.cond-nota{margin-top:32px;text-align:center;font-size:13px;color:var(--gray-400);font-style:italic}
 .cond-card{background:var(--white);border-radius:var(--rl);padding:28px;border:1.5px solid var(--gray-200);display:flex;gap:20px;align-items:flex-start;transition:var(--tr)}
 .cond-card:hover{border-color:var(--navy);box-shadow:0 8px 24px rgba(10,37,64,.1)}
 .cond-icon{flex-shrink:0;width:52px;height:52px;background:var(--navy);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--white);font-family:var(--fd);font-weight:900;font-size:13px;letter-spacing:-.3px;line-height:1;text-align:center}
@@ -470,6 +477,31 @@ footer p{font-size:13px;color:rgba(255,255,255,.22);line-height:1.8}
   </div>
 </section>
 
+<!-- MARCAS -->
+<section id="marcas">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Fabricantes</div>
+      <h2 class="section-title">Marcas que trabalhamos</h2>
+      <p style="color:var(--gray-600);font-size:16px;margin-top:12px;max-width:560px">Você orça com as melhores marcas do mercado, a gente fornece.</p>
+    </div>
+    <div class="marcas-grid reveal d1">
+      <span class="marca-pill">Gree</span>
+      <span class="marca-pill">Carrier</span>
+      <span class="marca-pill">Midea</span>
+      <span class="marca-pill">LG</span>
+      <span class="marca-pill">Fujitsu</span>
+      <span class="marca-pill">Mitsubishi</span>
+      <span class="marca-pill">Elgin</span>
+      <span class="marca-pill">Rheem</span>
+      <span class="marca-pill">Toshiba</span>
+      <span class="marca-pill">Cônsul</span>
+      <span class="marca-pill">Electrolux</span>
+      <span class="marca-pill">Springer</span>
+    </div>
+  </div>
+</section>
+
 <!-- CONDIÇÕES -->
 <section id="condicoes">
   <div class="container">
@@ -480,21 +512,18 @@ footer p{font-size:13px;color:rgba(255,255,255,.22);line-height:1.8}
     <div class="cond-grid">
       <div class="cond-card reveal d1">
         <div class="cond-icon">PIX</div>
-        <div><div class="cond-title">PIX</div><div class="cond-desc"><span class="pill-orange">1,5% de desconto</span> no valor do pedido</div><div class="cond-obs">Disponível apenas para CNPJ</div></div>
+        <div><div class="cond-title">PIX</div><div class="cond-desc">Pagamento via PIX</div><div class="cond-obs">Condições especiais disponíveis</div></div>
       </div>
       <div class="cond-card reveal d2">
         <div class="cond-icon">CARTÃO</div>
-        <div><div class="cond-title">Cartão de crédito</div><div class="cond-desc">Parcelamento em <span class="pill-orange">até 10x sem juros</span></div><div class="cond-obs">&nbsp;</div></div>
+        <div><div class="cond-title">Cartão de crédito</div><div class="cond-desc">Parcelamento disponível</div><div class="cond-obs">&nbsp;</div></div>
       </div>
-      <div class="cond-card reveal d1">
-        <div class="cond-icon">CPF</div>
-        <div><div class="cond-title">Boleto CPF</div><div class="cond-desc"><span class="pill-orange">30 / 60 / 90 dias</span></div><div class="cond-obs">Sujeito à aprovação do financeiro da Climafrio</div></div>
-      </div>
-      <div class="cond-card reveal d2">
-        <div class="cond-icon">CNPJ</div>
-        <div><div class="cond-title">Boleto CNPJ</div><div class="cond-desc"><span class="pill-orange">30 dias</span></div><div class="cond-obs">Sujeito à aprovação do financeiro da Climafrio</div></div>
+      <div class="cond-card reveal d3">
+        <div class="cond-icon">BOLETO</div>
+        <div><div class="cond-title">Boleto bancário</div><div class="cond-desc">Prazos disponíveis</div><div class="cond-obs">Sujeito à aprovação</div></div>
       </div>
     </div>
+    <p class="cond-nota reveal">Condições detalhadas disponíveis no material de apoio exclusivo para parceiros.</p>
   </div>
 </section>
 
