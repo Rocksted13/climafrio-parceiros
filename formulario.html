@@ -21,21 +21,26 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--fb);color:var(--text);background:var(--white);line-height:1.6;overflow-x:hidden;min-height:100vh}
 
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(6,21,37,.97);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.25)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+.logo-wrap{background:white;padding:6px 14px;border-radius:8px;display:inline-flex;align-items:center;text-decoration:none}
+.logo-wrap img{height:30px;display:block}
+.logo-txt{font-family:var(--fd);font-weight:900;font-size:22px;letter-spacing:.04em;color:var(--navy)}
+.logo-txt em{font-style:normal;color:#cc1a1a}
+.nav-back{font-family:var(--fd);font-weight:600;font-size:14px;color:rgba(255,255,255,.55);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--white)}
+.nav-back svg{width:16px;height:16px}
+
 /* ── LAYOUT SPLIT ── */
-.form-wrap{min-height:100vh;display:grid;grid-template-columns:1fr}
-@media(min-width:900px){.form-wrap{grid-template-columns:1fr 1fr}}
+.form-wrap{min-height:100vh;display:grid;grid-template-columns:1fr;padding-top:70px}
+@media(min-width:900px){.form-wrap{grid-template-columns:1fr 1fr;padding-top:0}}
 
 /* ── PAINEL VISUAL (esquerda) ── */
-.form-visual{position:relative;overflow:hidden;min-height:380px;background:var(--navy-deep)}
+.form-visual{position:relative;overflow:hidden;min-height:320px;background:var(--navy-deep)}
 @media(min-width:900px){.form-visual{position:sticky;top:0;height:100vh}}
 .form-visual img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:.65}
-.form-visual-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(6,21,37,.45) 0%,rgba(6,21,37,.88) 100%);display:flex;flex-direction:column;justify-content:space-between;padding:32px 40px}
-
-/* Logo no topo da foto */
-.visual-logo{display:inline-flex;align-items:center;background:white;padding:6px 14px;border-radius:8px;text-decoration:none;width:fit-content}
-.visual-logo img{height:28px;display:block}
-.visual-logo-txt{font-family:var(--fd);font-weight:900;font-size:20px;letter-spacing:.04em;color:var(--navy)}
-.visual-logo-txt em{font-style:normal;color:#cc1a1a}
+.form-visual-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(6,21,37,.45) 0%,rgba(6,21,37,.88) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:32px 40px}
 
 /* Conteúdo + Voltar no rodapé da foto */
 .visual-bottom{display:flex;flex-direction:column}
@@ -53,9 +58,9 @@ body{font-family:var(--fb);color:var(--text);background:var(--white);line-height
 .visual-back svg{width:14px;height:14px}
 
 /* ── PAINEL FORM (direita) ── */
-.form-panel{padding:56px 40px;display:flex;flex-direction:column;justify-content:center;background:var(--white)}
+.form-panel{padding:48px 40px;display:flex;flex-direction:column;justify-content:center;background:var(--white)}
 @media(max-width:599px){.form-panel{padding:36px 20px}}
-@media(min-width:900px){.form-panel{padding:64px 56px;overflow-y:auto;max-height:100vh}}
+@media(min-width:900px){.form-panel{padding-top:100px;padding-bottom:64px;padding-left:56px;padding-right:56px;overflow-y:auto;max-height:100vh}}
 .form-header{margin-bottom:36px}
 .section-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:700;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
 .section-label::before{content:'';display:inline-block;width:24px;height:2px;background:var(--orange)}
@@ -101,20 +106,25 @@ body{font-family:var(--fb);color:var(--text);background:var(--white);line-height
 </head>
 <body>
 
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo-wrap">
+      <img src="https://cdn.jsdelivr.net/gh/Rocksted13/climafrio-email-imagens@master/logo%20climafrio/logo-climafrio.png" alt="Climafrio" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" style="height:30px;display:block">
+      <span class="logo-txt">Clima<em>frio</em></span>
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Voltar
+    </a>
+  </div>
+</nav>
+
 <div class="form-wrap">
 
   <!-- VISUAL ESQUERDO -->
   <div class="form-visual">
     <img src="https://cdn.jsdelivr.net/gh/Rocksted13/climafrio-email-imagens@master/landing-page/instalador-formulario.png" alt="Instalador parceiro Climafrio">
     <div class="form-visual-overlay">
-
-      <!-- Logo no topo da foto -->
-      <a href="index.html" class="visual-logo">
-        <img src="https://cdn.jsdelivr.net/gh/Rocksted13/climafrio-email-imagens@master/logo%20climafrio/logo-climafrio.png" alt="Climafrio" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" style="height:28px;display:block">
-        <span class="visual-logo-txt">Clima<em>frio</em></span>
-      </a>
-
-      <!-- Conteúdo + botão Voltar no rodapé da foto -->
       <div class="visual-bottom">
         <div class="visual-badge"><span></span> Programa de Parceiros</div>
         <h2 class="visual-h2">Acesse as tabelas<br>e comece a<br>vender <em>hoje</em></h2>
@@ -125,14 +135,7 @@ body{font-family:var(--fb);color:var(--text);background:var(--white);line-height
           <div class="visual-item">Suporte direto via WhatsApp</div>
           <div class="visual-item">12 marcas, todos os segmentos</div>
         </div>
-        <div class="visual-footer">
-          <a href="index.html" class="visual-back">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Voltar
-          </a>
-        </div>
       </div>
-
     </div>
   </div>
 
