@@ -91,6 +91,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rg
 .btn-wapp-alt{width:100%;padding:14px 32px;background:transparent;color:var(--wapp);border:1.5px solid var(--wapp);border-radius:50px;font-family:var(--fd);font-weight:700;font-size:16px;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none}
 .btn-wapp-alt:hover{background:rgba(37,211,102,.08)}
 .btn-wapp-alt svg{width:18px;height:18px}
+.btn-submit:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.form-error{display:none;margin-top:12px;padding:12px 16px;background:#fef2f2;border:1px solid #fecaca;border-radius:var(--r);font-size:13px;color:#dc2626;text-align:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin .7s linear infinite;display:inline-block}
 </style>
 </head>
 <body>
@@ -112,8 +116,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rg
 
   <!-- VISUAL ESQUERDO -->
   <div class="form-visual">
-    <!-- Substituir src pela imagem gerada quando estiver pronta -->
-    <img src="https://cdn.jsdelivr.net/gh/Rocksted13/climafrio-email-imagens@master/landing-page/HERO-foto-direita.png" alt="Instalador parceiro Climafrio">
+    <img src="https://cdn.jsdelivr.net/gh/Rocksted13/climafrio-email-imagens@master/landing-page/instalador-formulario.png" alt="Instalador parceiro Climafrio">
     <div class="form-visual-overlay">
       <div class="visual-badge"><span></span> Programa de Parceiros</div>
       <h2 class="visual-h2">Acesse as tabelas<br>e comece a<br>vender <em>hoje</em></h2>
@@ -135,8 +138,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rg
       <p class="form-sub">Preencha os dados abaixo. Assim que enviar, você recebe acesso direto à tabela de preços.</p>
     </div>
 
-    <form action="https://formspree.io/f/xkokkrqz" method="POST">
-      <input type="hidden" name="_next" value="https://rocksted13.github.io/climafrio-parceiros/obrigado.html">
+    <form id="cadastro-form">
       <input type="hidden" name="_subject" value="Novo cadastro de parceiro Climafrio">
 
       <div class="field">
@@ -198,6 +200,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rg
       </button>
 
       <p class="form-disclaimer">Seus dados são usados exclusivamente para o programa de parceiros Climafrio. Sem spam.</p>
+      <p class="form-error" id="form-error">Algo deu errado. Tente novamente ou fale com a gente pelo WhatsApp.</p>
     </form>
 
     <div class="form-divider"><span>ou prefere o WhatsApp?</span></div>
@@ -210,5 +213,58 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rg
 
 </div>
 
+<script>
+const FORMSPREE = 'https://formspree.io/f/xkokkrqz';
+const SHEETS   = 'https://script.google.com/macros/s/AKfycbw2hK9SDqibPgCmInFh6FVSCnuIPKlATZFF_Mq4y-c2q0T-NCCOzrD1DXN9F0_aitUN/exec';
+
+document.getElementById('cadastro-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const btn = this.querySelector('.btn-submit');
+  const errEl = document.getElementById('form-error');
+  const originalHTML = btn.innerHTML;
+  errEl.style.display = 'none';
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin">↻</span> Enviando...';
+
+  const fd = new FormData(this);
+
+  // Monta JSON para o Google Sheets com os nomes exatos solicitados
+  const sheetsPayload = {
+    nome:      fd.get('nome')     || '',
+    empresa:   fd.get('empresa')  || '',
+    cidade:    (fd.get('cidade')  || '') + (fd.get('estado') ? '/' + fd.get('estado').toUpperCase() : ''),
+    telefone:  fd.get('whatsapp') || '',
+    segmento:  fd.getAll('segmento').join(', '),
+    email:     fd.get('email')    || ''
+  };
+
+  // Dispara Google Sheets em paralelo — falha silenciosa
+  fetch(SHEETS, {
+    method: 'POST',
+    mode:   'no-cors',
+    body:   JSON.stringify(sheetsPayload)
+  }).catch(() => {});
+
+  // Envia para o Formspree e aguarda resposta
+  try {
+    const res = await fetch(FORMSPREE, {
+      method:  'POST',
+      body:    fd,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      window.location.href = 'obrigado.html';
+    } else {
+      throw new Error('formspree');
+    }
+  } catch {
+    btn.disabled = false;
+    btn.innerHTML = originalHTML;
+    errEl.style.display = 'block';
+  }
+});
+</script>
 </body>
 </html>
