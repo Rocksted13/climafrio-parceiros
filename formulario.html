@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seja parceiro Climafrio — Acesse a tabela de preços</title>
+<meta name="description" content="Preencha o formulário e receba acesso imediato à tabela de preços Climafrio para instaladores parceiros.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0a2540;--navy-mid:#0d3060;--navy-deep:#061525;
+  --orange:#f97316;--orange-light:#fb923c;--orange-glow:rgba(249,115,22,.12);
+  --white:#fff;--off-white:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;
+  --gray-400:#94a3b8;--gray-600:#475569;--text:#0f172a;--wapp:#25d366;
+  --fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
+  --r:12px;--rl:20px;--tr:.3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--text);background:var(--white);line-height:1.6;overflow-x:hidden;min-height:100vh}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(6,21,37,.97);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.25)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+.logo-wrap{background:white;padding:6px 14px;border-radius:8px;display:inline-flex;align-items:center;text-decoration:none}
+.logo-wrap img{height:30px;display:block}
+.logo-txt{font-family:var(--fd);font-weight:900;font-size:22px;letter-spacing:.04em;color:var(--navy)}
+.logo-txt em{font-style:normal;color:#cc1a1a}
+.nav-back{font-family:var(--fd);font-weight:600;font-size:14px;color:rgba(255,255,255,.55);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--white)}
+.nav-back svg{width:16px;height:16px}
+
+/* ── LAYOUT SPLIT ── */
+.form-wrap{min-height:100vh;display:grid;grid-template-columns:1fr;padding-top:62px}
+@media(min-width:900px){.form-wrap{grid-template-columns:1fr 1fr}}
+
+/* ── PAINEL VISUAL (esquerda) ── */
+.form-visual{position:relative;overflow:hidden;min-height:320px;background:var(--navy-deep)}
+@media(min-width:900px){.form-visual{position:sticky;top:62px;height:calc(100vh - 62px)}}
+.form-visual img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:.6}
+.form-visual-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(6,21,37,.55) 0%,rgba(6,21,37,.85) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:48px 40px}
+.visual-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.3);border-radius:50px;padding:6px 16px;font-family:var(--fd);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-light);margin-bottom:20px;width:fit-content}
+.visual-badge span{width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.visual-h2{font-family:var(--fd);font-weight:900;font-size:clamp(32px,4vw,52px);line-height:1;color:var(--white);margin-bottom:16px}
+.visual-h2 em{font-style:normal;color:var(--orange)}
+.visual-sub{font-size:15px;color:rgba(255,255,255,.55);line-height:1.6;max-width:320px}
+.visual-items{margin-top:32px;display:flex;flex-direction:column;gap:10px}
+.visual-item{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.7)}
+.visual-item::before{content:'';width:18px;height:18px;border-radius:50%;background:rgba(249,115,22,.2);border:1.5px solid rgba(249,115,22,.5);flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center}
+
+/* ── PAINEL FORM (direita) ── */
+.form-panel{padding:60px 40px 60px;display:flex;flex-direction:column;justify-content:center;background:var(--white)}
+@media(max-width:599px){.form-panel{padding:40px 20px}}
+@media(min-width:900px){.form-panel{padding:80px 56px;overflow-y:auto;max-height:calc(100vh - 62px)}}
+.form-header{margin-bottom:36px}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:700;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.section-label::before{content:'';display:inline-block;width:24px;height:2px;background:var(--orange)}
+.form-title{font-family:var(--fd);font-weight:900;font-size:clamp(28px,4vw,44px);line-height:1.05;color:var(--navy);margin-bottom:10px}
+.form-sub{font-size:15px;color:var(--gray-600);line-height:1.6;max-width:400px}
+
+/* ── CAMPOS ── */
+.field{margin-bottom:20px}
+.field-row{display:grid;grid-template-columns:1fr 80px;gap:12px;margin-bottom:20px}
+.field label,.field-row .field label{display:block;font-family:var(--fd);font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.field input,.field select{width:100%;padding:13px 16px;border:1.5px solid var(--gray-200);border-radius:var(--r);font-family:var(--fb);font-size:15px;color:var(--text);background:var(--white);transition:border-color .2s,box-shadow .2s;outline:none;-webkit-appearance:none}
+.field input:focus,.field select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(249,115,22,.1)}
+.field input::placeholder{color:var(--gray-400)}
+.field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+
+/* ── CHECKBOXES SEGMENTO ── */
+.check-group{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:4px}
+.check-item{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r);cursor:pointer;transition:var(--tr);user-select:none}
+.check-item:hover{border-color:var(--orange);background:var(--orange-glow)}
+.check-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--orange);cursor:pointer;flex-shrink:0}
+.check-item span{font-family:var(--fd);font-weight:700;font-size:15px;color:var(--navy)}
+.check-item:has(input:checked){border-color:var(--orange);background:var(--orange-glow)}
+
+/* ── BOTÃO SUBMIT ── */
+.btn-submit{width:100%;padding:17px 32px;background:var(--orange);color:var(--white);border:none;border-radius:50px;font-family:var(--fd);font-weight:800;font-size:18px;letter-spacing:.02em;cursor:pointer;transition:var(--tr);box-shadow:0 4px 20px rgba(249,115,22,.35);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-submit:hover{background:var(--orange-light);transform:translateY(-2px);box-shadow:0 8px 32px rgba(249,115,22,.45)}
+.btn-submit:active{transform:translateY(0)}
+.btn-submit svg{width:20px;height:20px;flex-shrink:0}
+
+/* ── RODAPÉ DO FORM ── */
+.form-disclaimer{margin-top:16px;font-size:12px;color:var(--gray-400);text-align:center;line-height:1.5}
+.form-divider{display:flex;align-items:center;gap:16px;margin:24px 0}
+.form-divider span{font-size:12px;color:var(--gray-400);white-space:nowrap}
+.form-divider::before,.form-divider::after{content:'';flex:1;height:1px;background:var(--gray-200)}
+.btn-wapp-alt{width:100%;padding:14px 32px;background:transparent;color:var(--wapp);border:1.5px solid var(--wapp);border-radius:50px;font-family:var(--fd);font-weight:700;font-size:16px;cursor:pointer;transition:var(--tr);display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none}
+.btn-wapp-alt:hover{background:rgba(37,211,102,.08)}
+.btn-wapp-alt svg{width:18px;height:18px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo-wrap">
+      <img src="https://cdn.jsdelivr.net/gh/Rocksted13/climafrio-email-imagens@master/logo%20climafrio/logo-climafrio.png" alt="Climafrio" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'" style="height:30px;display:block">
+      <span class="logo-txt">Clima<em>frio</em></span>
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Voltar
+    </a>
+  </div>
+</nav>
+
+<div class="form-wrap">
+
+  <!-- VISUAL ESQUERDO -->
+  <div class="form-visual">
+    <!-- Substituir src pela imagem gerada quando estiver pronta -->
+    <img src="https://cdn.jsdelivr.net/gh/Rocksted13/climafrio-email-imagens@master/landing-page/HERO-foto-direita.png" alt="Instalador parceiro Climafrio">
+    <div class="form-visual-overlay">
+      <div class="visual-badge"><span></span> Programa de Parceiros</div>
+      <h2 class="visual-h2">Acesse as tabelas<br>e comece a<br>vender <em>hoje</em></h2>
+      <p class="visual-sub">Preencha o formulário ao lado e receba acesso imediato à tabela de preços Climafrio.</p>
+      <div class="visual-items">
+        <div class="visual-item">Tabela de preços exclusiva para parceiros</div>
+        <div class="visual-item">Comissão de até 5% em cada venda</div>
+        <div class="visual-item">Suporte direto via WhatsApp</div>
+        <div class="visual-item">12 marcas, todos os segmentos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULÁRIO DIREITO -->
+  <div class="form-panel">
+    <div class="form-header">
+      <div class="section-label">Cadastro gratuito</div>
+      <h1 class="form-title">Quero ser<br>parceiro Climafrio</h1>
+      <p class="form-sub">Preencha os dados abaixo. Assim que enviar, você recebe acesso direto à tabela de preços.</p>
+    </div>
+
+    <form action="https://formspree.io/f/xkokkrqz" method="POST">
+      <input type="hidden" name="_next" value="https://rocksted13.github.io/climafrio-parceiros/obrigado.html">
+      <input type="hidden" name="_subject" value="Novo cadastro de parceiro Climafrio">
+
+      <div class="field">
+        <label for="nome">Nome completo *</label>
+        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo" autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="empresa">Empresa</label>
+        <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa (se tiver)">
+      </div>
+
+      <div class="field-row">
+        <div class="field" style="margin-bottom:0">
+          <label for="cidade">Cidade *</label>
+          <input type="text" id="cidade" name="cidade" required placeholder="Sua cidade" autocomplete="address-level2">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <label for="estado">UF *</label>
+          <input type="text" id="estado" name="estado" required placeholder="SP" maxlength="2" style="text-transform:uppercase">
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:20px">
+        <label for="whatsapp">WhatsApp *</label>
+        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999" autocomplete="tel">
+      </div>
+
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com" autocomplete="email">
+      </div>
+
+      <div class="field">
+        <label>Segmento de atuação *</label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="segmento" value="Residencial">
+            <span>Residencial</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="segmento" value="Comercial">
+            <span>Comercial</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="segmento" value="Industrial">
+            <span>Industrial</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="segmento" value="Hospitalar">
+            <span>Hospitalar</span>
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Enviar e acessar tabela de preços
+      </button>
+
+      <p class="form-disclaimer">Seus dados são usados exclusivamente para o programa de parceiros Climafrio. Sem spam.</p>
+    </form>
+
+    <div class="form-divider"><span>ou prefere o WhatsApp?</span></div>
+
+    <a href="https://wa.me/5511XXXXXXXXX?text=Ol%C3%A1%2C+quero+ser+parceiro+Climafrio" class="btn-wapp-alt" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar direto no WhatsApp
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
